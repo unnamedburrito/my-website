@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam Bawa · projects, code, contact</title>
+  <meta name="description" content="Samrath Bawa: CS student at Cal Poly Pomona building sim-racing tools, input automation, and other things worth taking apart. Projects load live from GitHub.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#303030">
+  <link rel="canonical" href="https://sambawa.dev/">
+  <meta property="og:title" content="Sam Bawa · projects, code, contact">
+  <meta property="og:description" content="CS student at Cal Poly Pomona. Sim-racing tools, input automation, live GitHub telemetry.">
+  <meta property="og:url" content="https://sambawa.dev/">
+  <meta property="og:type" content="website">
+
+  <script>
+    // Set theme before first paint. Dark is the site's native theme.
+    (function () {
+      var forced = new URLSearchParams(location.search).get('theme');
+      var stored = null;
+      try { stored = localStorage.getItem('theme'); } catch (e) {}
+      var theme = forced || stored || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+      document.documentElement.dataset.theme = theme;
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300..800&family=Fragment+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23303030'/%3E%3Ctext x='50' y='67' font-size='46' text-anchor='middle' font-family='monospace' fill='%23f2f2f2'%3ESB%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top">sambawa<span class="tld">.dev</span></a>
+    <nav class="site-nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme">
+      <svg class="icon-sun" aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+      </svg>
+      <svg class="icon-moon" aria-hidden="true" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>
+      </svg>
+    </button>
+  </header>
+
+  <main id="top">
+
+    <section class="hero" aria-labelledby="hero-name">
+      <p class="hero-status">CS student · Cal Poly Pomona '29</p>
+      <h1 id="hero-name">Sam Bawa</h1>
+      <p class="hero-intro">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim
+        ad minim veniam quis nostrud exercitation.
+      </p>
+      <ul class="hero-links">
+        <li><a class="link-btn primary" href="assets/Sam%20Bawa%20Resume.pdf" download="Sam Bawa Resume.pdf">Resume<span class="arrow" aria-hidden="true"> ↓</span></a></li>
+        <li><a class="link-btn" href="https://github.com/unnamedburrito" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow" aria-hidden="true"> ↗</span></a></li>
+        <li><a class="link-btn" href="https://www.linkedin.com/in/sam-bawa/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="arrow" aria-hidden="true"> ↗</span></a></li>
+        <li><a class="link-btn" href="mailto:samrathbawa@outlook.com">Email</a></li>
+      </ul>
+      <ul class="stack" aria-label="Technical skills">
+        <li>C++</li><li>C#</li><li>Java</li><li>Python</li><li>JavaScript</li><li>HTML</li><li>CSS</li><li>Git</li>
+      </ul>
+    </section>
+
+    <section class="projects" id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading">Projects</h2>
+      <p class="telemetry" role="status">
+        <span class="telemetry-dot" data-state="loading" aria-hidden="true"></span>
+        <span id="telemetry-text">connecting · api.github.com/unnamedburrito</span>
+      </p>
+      <ul id="project-grid" class="project-grid">
+        <li class="project-card" data-repo="ForzaFFB">
+          <div class="card-head">
+            <h3><a href="https://github.com/unnamedburrito/ForzaFFB" target="_blank" rel="noopener noreferrer">ForzaFFB</a></h3>
+            <span class="card-meta mono" data-slot="meta"></span>
+          </div>
+          <p class="card-desc" data-slot="desc">Force feedback for unsupported wheels in Forza, driven by the game's telemetry output.</p>
+          <p class="card-foot mono"><span data-slot="updated"></span></p>
+        </li>
+        <li class="project-card" data-repo="macro">
+          <div class="card-head">
+            <h3><a href="https://github.com/unnamedburrito/macro" target="_blank" rel="noopener noreferrer">macro</a></h3>
+            <span class="card-meta mono" data-slot="meta"></span>
+          </div>
+          <p class="card-desc" data-slot="desc">Input automation in C#.</p>
+          <p class="card-foot mono"><span data-slot="updated"></span></p>
+        </li>
+      </ul>
+      <noscript><p class="telemetry-note">Live stats need JavaScript, the links above still work.</p></noscript>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in
+        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+      </p>
+      <p>
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+        officia deserunt mollit anim id est laborum.
+      </p>
+
+      <div class="activity">
+        <div class="activity-inner">
+          <h3 class="activity-title mono" id="activity-heading">contributions · last 12 months</h3>
+          <div class="calendar-scroll">
+            <div id="calendar" class="calendar" aria-hidden="true"></div>
+          </div>
+          <p id="activity-summary" class="activity-summary mono" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume" id="resume" aria-labelledby="resume-heading">
+      <div class="resume-head">
+        <h2 id="resume-heading">Resume</h2>
+        <a class="link-btn primary" href="assets/Sam%20Bawa%20Resume.pdf" download="Sam Bawa Resume.pdf">Download PDF<span class="arrow" aria-hidden="true"> ↓</span></a>
+      </div>
+
+      <div class="pdf-frame">
+      <article class="sheet" aria-label="Resume of Samrath Bawa">
+        <header class="sheet-header">
+          <p class="sheet-name">Samrath Bawa</p>
+          <p class="sheet-contact mono"><a href="mailto:samrathbawa@outlook.com">samrathbawa@outlook.com</a> · <a href="https://sambawa.dev">sambawa.dev</a> · <a href="https://github.com/unnamedburrito" target="_blank" rel="noopener noreferrer">github.com/unnamedburrito</a></p>
+        </header>
+
+        <section class="sheet-section" aria-labelledby="rs-skills">
+          <h3 id="rs-skills">Skills</h3>
+          <div class="skill-lines">
+            <p><strong>Electrical and Programming:</strong> Soldering, Lighting, C++, C#, Java, Python, CSS, JavaScript, HTML, Git</p>
+            <p><strong>3D Printing:</strong> Maintaining machines, Slicing, Design, Safety operating</p>
+            <p><strong>Laser Cut and Engraving:</strong> CAD, CO2 Laser, Assembly, Safety Protocols</p>
+            <p><strong>Woodworking:</strong> Bandsaw, Tablesaw, Sanding, Staining</p>
+            <p><strong>Professional Communication:</strong> Collaborating with other groups, Handling disputes within group civilly</p>
+            <p><strong>Autonomy:</strong> Completing tasks with minimal guidance and supervision</p>
+            <p><strong>Project Management:</strong> Time management, Managing group roles</p>
+          </div>
+        </section>
+
+        <section class="sheet-section" aria-labelledby="rs-exp">
+          <h3 id="rs-exp">Experience</h3>
+          <div class="sheet-entry">
+            <div class="entry-line"><strong>Jr. Auxiliary Volunteer</strong><span class="entry-when mono">May 2024 – May 2025</span></div>
+            <p class="entry-org">Hoag Hospital</p>
+            <ul>
+              <li>Providing support services to patients, visitors, and staff</li>
+              <li>Customer services, general information, and wayfinding around the hospital</li>
+              <li>Wheelchair services</li>
+            </ul>
+          </div>
+          <div class="sheet-entry">
+            <div class="entry-line"><strong>Student</strong><span class="entry-when mono">August 2023 – June 2025</span></div>
+            <p class="entry-org">Woodbridge High School Makerspace</p>
+            <ul>
+              <li>3D printing on Prusas</li>
+              <li>Electronics including microcontrollers, soldering, and lighting</li>
+              <li>Woodworking and CAD</li>
+            </ul>
+          </div>
+          <div class="sheet-entry">
+            <div class="entry-line"><strong>Vice President</strong><span class="entry-when mono">August 2023 – June 2025</span></div>
+            <p class="entry-org">Woodbridge High School Web Development Club</p>
+            <ul>
+              <li>Helping fellow club members learn web development</li>
+              <li>Teaching HTML, JavaScript, and CSS</li>
+              <li>Created websites for multiple clients such as other clubs and teachers</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="sheet-section" aria-labelledby="rs-edu">
+          <h3 id="rs-edu">Education</h3>
+          <div class="sheet-entry">
+            <div class="entry-line"><strong>California State Polytechnic University, Pomona</strong><span class="entry-when mono">2025 – 2029</span></div>
+            <p class="entry-org">Bachelor of Science in Computer Science</p>
+          </div>
+          <div class="sheet-entry">
+            <div class="entry-line"><strong>Woodbridge High School</strong><span class="entry-when mono">2021 – 2025</span></div>
+            <p class="entry-org">High School Diploma</p>
+          </div>
+        </section>
+      </article>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <h2>Contact</h2>
+    <a class="footer-mail" href="mailto:samrathbawa@outlook.com">samrathbawa@outlook.com</a>
+    <ul class="footer-links">
+      <li><a href="https://github.com/unnamedburrito" target="_blank" rel="noopener noreferrer">GitHub<span class="arrow" aria-hidden="true"> ↗</span></a></li>
+      <li><a href="https://www.linkedin.com/in/sam-bawa/" target="_blank" rel="noopener noreferrer">LinkedIn<span class="arrow" aria-hidden="true"> ↗</span></a></li>
+      <li><a href="assets/Sam%20Bawa%20Resume.pdf" download="Sam Bawa Resume.pdf">Resume PDF<span class="arrow" aria-hidden="true"> ↓</span></a></li>
+    </ul>
+    <p class="fineprint mono">© <span id="year">2026</span> Samrath Bawa · hosted on Cloudflare Pages</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
