@@ -47,14 +47,6 @@
 
   /* ---------- project cards ---------- */
 
-  var telemetryDot = document.querySelector('.telemetry-dot');
-  var telemetryText = document.getElementById('telemetry-text');
-
-  function setTelemetry(state, text) {
-    telemetryDot.dataset.state = state;
-    telemetryText.textContent = text;
-  }
-
   function relTime(iso) {
     var s = (Date.now() - new Date(iso).getTime()) / 1000;
     var steps = [[31536000, 'y'], [2592000, 'mo'], [604800, 'w'], [86400, 'd'], [3600, 'h'], [60, 'm']];
@@ -75,7 +67,9 @@
       var meta = card.querySelector('[data-slot="meta"]');
       var updated = card.querySelector('[data-slot="updated"]');
 
-      if (repo.description) { desc.textContent = repo.description; desc.classList.add('swap'); }
+      // GitHub's description verbatim; stays blank when the repo has none
+      desc.textContent = repo.description || '';
+      if (repo.description) desc.classList.add('swap');
       var parts = [];
       if (repo.language) parts.push(repo.language);
       if (repo.stargazers_count > 0) parts.push(STAR + repo.stargazers_count);
@@ -90,7 +84,6 @@
     var cached = cacheGet('gh-repos-v3', CONFIG.repoCacheTtl);
     if (cached && cached.fresh) {
       renderRepos(cached.data);
-      setTelemetry('cached', 'cached' + SEP + 'api.github.com/' + CONFIG.user);
       return;
     }
     fetch('https://api.github.com/users/' + CONFIG.user + '/repos?per_page=100')
@@ -104,15 +97,10 @@
         });
         cacheSet('gh-repos-v3', wanted);
         renderRepos(wanted);
-        setTelemetry('live', 'live' + SEP + 'api.github.com/' + CONFIG.user);
       })
       .catch(function () {
-        if (cached) {
-          renderRepos(cached.data);
-          setTelemetry('cached', 'cached (offline)' + SEP + 'api.github.com/' + CONFIG.user);
-        } else {
-          setTelemetry('error', 'github api unreachable, links still work');
-        }
+        // no fresh data: fall back to stale cache, or the static card text and links
+        if (cached) renderRepos(cached.data);
       });
   }
 

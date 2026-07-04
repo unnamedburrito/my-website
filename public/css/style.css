@@ -156,7 +156,7 @@ main,
 
 /* ---------- hero ---------- */
 
-.hero { padding-block: clamp(3.5rem, 9vw, 6.5rem) 0; }
+.hero { padding-block: clamp(1.75rem, 4.5vw, 3.25rem) 0; }
 
 .hero-status {
   margin: 0 0 var(--space-3);
@@ -244,30 +244,6 @@ h2 {
 }
 
 /* ---------- projects ---------- */
-
-.telemetry {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  margin: 0 0 var(--space-4);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--muted);
-}
-.telemetry-dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--muted);
-  flex: none;
-}
-.telemetry-dot[data-state="loading"] { animation: pulse 1.2s ease-in-out infinite; }
-.telemetry-dot[data-state="live"] { background: var(--ink); }
-.telemetry-dot[data-state="cached"] { background: var(--cal-2); }
-.telemetry-dot[data-state="error"] { background: transparent; border: 1.5px solid var(--muted); }
-@keyframes pulse { 50% { opacity: 0.25; } }
-@media (prefers-reduced-motion: reduce) {
-  .telemetry-dot[data-state="loading"] { animation: none; }
-}
 
 .project-grid {
   list-style: none;
