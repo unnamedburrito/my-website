@@ -388,10 +388,14 @@ h2 {
   font-family: Georgia, "Times New Roman", serif;
   max-width: 43rem;
   margin-inline: auto;
-  aspect-ratio: 8.5 / 11;
-  height: auto;
   box-shadow: 0 2px 6px rgba(0,0,0,.22), 0 10px 28px rgba(0,0,0,.18);
-  padding: clamp(1.5rem, 6vw, 3.25rem);
+  padding: clamp(1.25rem, 5vw, 3.25rem);
+  box-sizing: border-box;
+}
+/* letter-page proportion only where the paper is wide enough for its content
+   to fit inside it; on narrow screens the paper grows with the text instead */
+@media (min-width: 760px) {
+  .sheet { aspect-ratio: 8.5 / 11; height: auto; }
 }
 
 .sheet .mono {
