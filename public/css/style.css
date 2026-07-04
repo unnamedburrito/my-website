@@ -31,7 +31,7 @@
   --space-6: 1.5rem;
   --space-8: 2rem;
   --space-12: 3rem;
-  --section-gap: clamp(4.5rem, 10vw, 8rem);
+  --section-gap: clamp(2.25rem, 5vw, 4rem);
 
   --w-body: 400;
   --radius: 6px;
@@ -232,7 +232,7 @@ h1 {
 
 /* ---------- sections ---------- */
 
-section.projects, section.about, section.resume { margin-top: var(--section-gap); }
+section.projects, section.about, section.resume, section.certs { margin-top: var(--section-gap); }
 
 h2 {
   margin: 0 0 var(--space-6);
@@ -456,6 +456,46 @@ h2 {
 .entry-org { margin: 0.1rem 0 var(--space-1); font-style: italic; font-size: 0.9375rem; color: #3d3d3d; }
 .sheet-entry ul { margin: var(--space-1) 0 0; padding-left: 1.1rem; font-size: 0.9375rem; color: #222222; }
 .sheet-entry li { margin-bottom: var(--space-1); }
+
+/* ---------- certifications ---------- */
+
+.cert-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-auto-rows: 1fr; /* every card the same height, regardless of text length */
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+}
+
+.cert-card {
+  position: relative; /* anchor for the stretched credential link below */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-6);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: border-color 140ms ease-out, transform 140ms ease-out;
+}
+.cert-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+  .cert-card, .cert-card:hover { transform: none; transition: none; }
+}
+
+.cert-name { margin: 0; font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.01em; color: var(--ink); text-wrap: balance; }
+.cert-name a { text-decoration: none; }
+.cert-name a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.cert-name a::after { content: " ↗"; font-size: 0.8em; color: var(--muted); }
+.cert-name a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.cert-issuer { margin: 0; font-size: 0.9375rem; color: var(--text); }
 
 /* ---------- footer ---------- */
 
