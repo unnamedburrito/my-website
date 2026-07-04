@@ -5,7 +5,7 @@
   'use strict';
 
   var CONFIG = {
-    user: 'unnamedburrito',
+    user: 'samrathbawa',
     repos: ['ForzaFFB', 'macro'],       // curated list: add a name here to add a card
     repoCacheTtl: 30 * 60 * 1000,       // 30 min
     calendarCacheTtl: 60 * 60 * 1000    // 60 min
@@ -87,7 +87,7 @@
   }
 
   function loadRepos() {
-    var cached = cacheGet('gh-repos-v2', CONFIG.repoCacheTtl);
+    var cached = cacheGet('gh-repos-v3', CONFIG.repoCacheTtl);
     if (cached && cached.fresh) {
       renderRepos(cached.data);
       setTelemetry('cached', 'cached' + SEP + 'api.github.com/' + CONFIG.user);
@@ -102,7 +102,7 @@
         var wanted = all.filter(function (r) {
           return CONFIG.repos.some(function (n) { return n.toLowerCase() === r.name.toLowerCase(); });
         });
-        cacheSet('gh-repos-v2', wanted);
+        cacheSet('gh-repos-v3', wanted);
         renderRepos(wanted);
         setTelemetry('live', 'live' + SEP + 'api.github.com/' + CONFIG.user);
       })
@@ -151,7 +151,7 @@
   }
 
   function loadCalendar() {
-    var cached = cacheGet('gh-cal-v2', CONFIG.calendarCacheTtl);
+    var cached = cacheGet('gh-cal-v3', CONFIG.calendarCacheTtl);
     if (cached && cached.fresh) { renderCalendar(cached.data); return; }
     fetch('https://github-contributions-api.jogruber.de/v4/' + CONFIG.user + '?y=last')
       .then(function (res) {
@@ -160,7 +160,7 @@
       })
       .then(function (data) {
         if (!data.contributions || !data.contributions.length) throw new Error('empty');
-        cacheSet('gh-cal-v2', data);
+        cacheSet('gh-cal-v3', data);
         renderCalendar(data);
       })
       .catch(function () {

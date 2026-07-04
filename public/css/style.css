@@ -279,6 +279,7 @@ h2 {
 }
 
 .project-card {
+  position: relative; /* anchor for the stretched title link below */
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -288,6 +289,13 @@ h2 {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   transition: border-color 140ms ease-out, transform 140ms ease-out;
+}
+/* the title link's hit area covers the whole card (its ::after is the arrow glyph,
+   so the overlay uses ::before) */
+.card-head a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 .project-card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
 @media (prefers-reduced-motion: reduce) {
