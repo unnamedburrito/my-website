@@ -324,13 +324,16 @@ h2 {
 .about p { max-width: 62ch; margin: 0 0 var(--space-4); text-wrap: pretty; }
 
 .activity {
+  position: relative; /* anchor for the stretched GitHub link below */
   margin-top: var(--space-8);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: var(--space-6);
+  transition: border-color 140ms ease-out;
 }
+.activity:hover { border-color: var(--line-strong); }
 /* one inner column, sized to the calendar grid and centered in the card:
    title, grid, and summary all share the same left edge */
 .activity-inner {
@@ -343,7 +346,15 @@ h2 {
   font-weight: 400;
   color: var(--muted);
 }
-.calendar-scroll { overflow-x: auto; padding-bottom: var(--space-2); }
+.activity-title a { color: inherit; text-decoration: none; }
+.activity-title a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.activity-title a::after { content: " ↗"; font-size: 0.9em; }
+.activity-title a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.calendar-scroll { overflow-x: auto; }
 .calendar {
   display: grid;
   grid-auto-flow: column;
